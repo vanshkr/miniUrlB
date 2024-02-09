@@ -21,7 +21,6 @@ export const getListOfCreatedUrl = async (req, res) => {
 };
 
 export const createShortUrl = async (req, res) => {
-  console.log(req);
   const host = req.get("host");
   let { fullURL, alias } = req?.body;
   const { userId } = req;
