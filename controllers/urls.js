@@ -1,5 +1,6 @@
 import ShortUrlModel from "../models/shortURLSchema.js";
-
+import dotenv from "dotenv";
+dotenv.config();
 export const getListOfCreatedUrl = async (req, res) => {
   const { userId } = req;
   if (!userId) {
