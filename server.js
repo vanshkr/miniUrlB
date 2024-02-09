@@ -17,5 +17,12 @@ app.use("/url", urlRoutes);
 const PORT = process.env.PORT || 5000;
 mongoose
   .connect(process.env.CONNECTION_URL)
-  .then(() => app.listen(PORT, () => {}))
-  .catch((err) => Error(err));
+  .then(() =>
+    app.listen(PORT, () => {
+      console.log(PORT);
+    })
+  )
+  .catch((err) => {
+    console.log(err);
+    return Error(err);
+  });
