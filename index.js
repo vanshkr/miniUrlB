@@ -17,7 +17,9 @@ app.use("/url", urlRoutes);
 
 const PORT = process.env.PORT;
 const CONNECTION_URL = process.env.CONNECTION_URL;
-
+app.get("/status", (req, res) => {
+  res.send("Server is up and running!");
+});
 mongoose
   .connect(CONNECTION_URL)
   .then(() => {

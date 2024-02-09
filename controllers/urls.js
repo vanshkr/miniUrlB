@@ -21,6 +21,8 @@ export const getListOfCreatedUrl = async (req, res) => {
 };
 
 export const createShortUrl = async (req, res) => {
+  console.log(req);
+  const host = req.get("host");
   let { fullURL, alias } = req?.body;
   const { userId } = req;
   if (!fullURL) {
@@ -49,7 +51,8 @@ export const createShortUrl = async (req, res) => {
       fullUrl: fullURL,
       alias: alias,
     });
-    const shortUrlString = process.env.HOST_KEY + alias;
+    const shortUrlString = req.protocol + "://" + host + "/url/" + alias;
+    console.log;
     return res.status(200).json({ shortUrl: shortUrlString });
   } catch (err) {
     return res.status(500).json({ message: "Something went wrong" });
