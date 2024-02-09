@@ -11,13 +11,7 @@ dotenv.config();
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-const corsConfig = {
-  origin: "",
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-};
-app.use(cors(corsConfig));
-app.options("", cors(corsConfig));
+app.use(cors());
 app.use("/user", userRoutes);
 app.use("/url", urlRoutes);
 
