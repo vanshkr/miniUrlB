@@ -1,4 +1,4 @@
-import ShortUrlModel from "../models/shortURLSchema.mjs";
+import ShortUrlModel from "../models/shortURLSchema.js";
 import dotenv from "dotenv";
 dotenv.config();
 export const getListOfCreatedUrl = async (req, res) => {

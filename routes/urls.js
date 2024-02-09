@@ -5,9 +5,9 @@ import {
   editUrl,
   removeUrl,
   removeAllUrl,
-} from "../controllers/urls.mjs";
+} from "../controllers/urls.js";
 import express from "express";
-import { session } from "../middlewares/session.mjs";
+import { session } from "../middlewares/session.js";
 
 const router = express.Router();
 router.get("/list", session, getListOfCreatedUrl);
