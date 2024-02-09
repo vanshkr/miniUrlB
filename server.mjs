@@ -14,15 +14,18 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use("/user", userRoutes);
 app.use("/url", urlRoutes);
-const PORT = process.env.PORT || 5000;
+
+const PORT = process.env.PORT;
+const CONNECTION_URL = process.env.CONNECTION_URL;
+
 mongoose
-  .connect(process.env.CONNECTION_URL)
-  .then(() =>
+  .connect(CONNECTION_URL)
+  .then(() => {
     app.listen(PORT, () => {
-      console.log(PORT);
-    })
-  )
+      console.log(`Server is running on PORT: ${PORT}`);
+    });
+  })
   .catch((err) => {
-    console.log(err);
-    return Error(err);
+    console.error("Error connecting to database:", err.message);
+    process.exit(1); // Exit with a non-zero code to indicate failure
   });
